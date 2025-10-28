@@ -10,6 +10,11 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.GetComponent<ZonaSegnaPunti>())
+        {
+            Debug.Log($"Colliso contro il segan punti ho guadagnato un punto");
+        }
+        
         Destroy(gameObject);
     }
 
