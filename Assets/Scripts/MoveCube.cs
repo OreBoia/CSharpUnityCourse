@@ -5,6 +5,7 @@ public class MoveCube: MonoBehaviour
     private Rigidbody _rb;
     [SerializeField] private Vector3 _dir;
     [SerializeField] private float _speed = 1f;
+    [SerializeField] private float _rotateSpeed;
 
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Color _color;
@@ -40,17 +41,16 @@ public class MoveCube: MonoBehaviour
     {
         _dir = Vector3.zero;
 
+        Debug.Log($"Transform Forward: {transform.forward}");
         if (Input.GetKey(KeyCode.W))
-            _dir += Vector3.forward;
-
-        if (Input.GetKey(KeyCode.S))
-            _dir += Vector3.back;
+            _dir += transform.forward; // Vector3.forward (x= 0,y= 0,z= 1)
+        else if (Input.GetKey(KeyCode.S))
+            _dir += -transform.forward;
 
         if (Input.GetKey(KeyCode.A))
-            _dir += Vector3.left;
-
-        if (Input.GetKey(KeyCode.D))
-            _dir += Vector3.right;
+            transform.Rotate(new Vector3(0f, -_rotateSpeed, 0f));
+        else if (Input.GetKey(KeyCode.D))
+            transform.Rotate(new Vector3(0f, _rotateSpeed, 0f));
     }
 
 
