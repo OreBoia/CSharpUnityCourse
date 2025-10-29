@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ZonaSegnaPunti : MonoBehaviour
 {
-    [SerializeField] private int _score = 0; //99
-
     void OnTriggerEnter(Collider other)
     {
         //Bullet entra

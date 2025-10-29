@@ -13,7 +13,7 @@ public class ShootBullet : MonoBehaviour
             var bullet = Instantiate(_prefabToSpawn, null);
             bullet.transform.position = _spawnPoint.position;
             bullet.SetActive(true);
-
+    
             var rb = bullet.GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * _shootForce, ForceMode.Impulse);
         }

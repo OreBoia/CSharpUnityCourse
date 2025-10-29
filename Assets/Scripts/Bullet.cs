@@ -12,10 +12,9 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.GetComponent<ZonaSegnaPunti>())
         {
-            Debug.Log($"Colliso contro il segan punti ho guadagnato un punto");
+            Debug.Log($"Colliso contro il segna punti ho guadagnato un punto");
         }
-        
+
         Destroy(gameObject);
     }
-
 }
