@@ -7,10 +7,10 @@ public class ZonaSegnaPunti : MonoBehaviour
         //Bullet entra
         if (other.gameObject.GetComponent<Bullet>()) //riconosce che è un bullet
         {
-            if (GameManager.Instance.IncrementaScore(1) >= 10)
-            {
-                Destroy(gameObject);
-            }
+            // if (GameManager.Instance.IncrementaScore(1) >= 10)
+            // {
+            //     Destroy(gameObject);
+            // }
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Threading;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,12 +7,12 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
 
-    [SerializeField] private int _score = 0;
+    // [SerializeField] private int _score = 0;
 
     private bool _startTimer = false;
     [SerializeField] private float _timer = 0;
-
     [SerializeField] private float _lastTime = 0;
+    [SerializeField] private TextMeshProUGUI _timerText;
 
     void Awake()
     {
@@ -26,14 +27,15 @@ public class GameManager : MonoBehaviour
         if (_startTimer)
         {
             _timer += Time.deltaTime;
+            _timerText.text = $"{_timer:F2}";
         }
     }
 
-    public int IncrementaScore(int amount)
-    {
-        _score += amount;
-        return _score;
-    }
+    // public int IncrementaScore(int amount)
+    // {
+    //     _score += amount;
+    //     return _score;
+    // }
 
     public void StartTimer()
     {
