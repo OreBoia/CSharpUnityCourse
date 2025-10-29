@@ -8,6 +8,7 @@ public class SpeedBuff : MonoBehaviour
         if(player != null)
         {
             player.BoostSpeed(2);
+            gameObject.SetActive(false);
         }    
     }    
 }
