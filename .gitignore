@@ -84,3 +84,6 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 yarn.lock
+QUICK_TEST.md
+Assets/Scripts/README_Unity.md
+backend-fake/README.md
