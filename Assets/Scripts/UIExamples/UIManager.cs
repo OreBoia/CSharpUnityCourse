@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Button _button;
+    [SerializeField] private Slider _slider;
 
     public string messaggioPersonalizzato = "Ciao dal codice!";
 
@@ -13,6 +14,8 @@ public class UIManager : MonoBehaviour
         // Eventi Button standard
         _button.onClick.AddListener(() => Interazione(messaggioPersonalizzato));
         _button.onClick.AddListener(InterazioneSemplice);
+
+        _slider.onValueChanged.AddListener(OnSlideChanged);
 
         // Altri eventi tramite EventTrigger
         // AggiungiEventiAggiuntivi();
@@ -76,47 +79,9 @@ public class UIManager : MonoBehaviour
     public void InterazioneSemplice(){
 
     }
-    
-    // Gestori degli eventi del mouse/touch
-    public void OnPointerEnter(PointerEventData eventData)
+        
+    public void OnSlideChanged(float valore)
     {
-        Debug.Log("Mouse entrato nel button");
-        // Esempio: cambia colore o scala
-    }
-    
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log("Mouse uscito dal button");
-        // Esempio: ripristina colore o scala
-    }
-    
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("Button premuto (mouse down)");
-        // Esempio: effetto di pressione
-    }
-    
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Debug.Log("Button rilasciato (mouse up)");
-        // Esempio: ripristina da effetto pressione
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        Debug.Log($"Button trascinato: {eventData.delta}");
-    }
-    
-    // Gestori degli eventi di selezione
-    public void OnSelect(BaseEventData eventData)
-    {
-        Debug.Log("Button selezionato");
-        // Esempio: mostra un bordo di selezione per la navigazione da tastiera/gamepad
-    }
-
-    public void OnDeselect(BaseEventData eventData)
-    {
-        Debug.Log("Button deselezionato");
-        // Esempio: nascondi il bordo di selezione
+        Debug.Log($"Valore dello slider cambiato: {valore:F2}");
     }
 }
