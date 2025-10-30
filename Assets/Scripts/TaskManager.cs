@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
-[System.Serializable]
+[Serializable]
 public class Task
 {
     public int id;
@@ -20,7 +21,7 @@ public class Task
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class TaskResponse
 {
     public string error;
@@ -28,7 +29,7 @@ public class TaskResponse
     public string details;
 }
 
-[System.Serializable]
+[Serializable]
 public class TaskListWrapper
 {
     public Task[] tasks;
@@ -52,11 +53,11 @@ public class TaskManager : MonoBehaviour
     public string baseUrl = "http://localhost:8080/api/tasks";
     
     [Header("Events")]
-    public Action<List<Task>> OnTasksLoaded;
-    public Action<Task> OnTaskCreated;
-    public Action<Task> OnTaskUpdated;
-    public Action<string> OnTaskDeleted;
-    public Action<string> OnError;
+    public UnityAction<List<Task>> OnTasksLoaded;
+    public UnityAction<Task> OnTaskCreated;
+    public UnityAction<Task> OnTaskUpdated;
+    public UnityAction<string> OnTaskDeleted;
+    public UnityAction<string> OnError;
     
     [Header("Debug")]
     public bool enableDebugLogs = true;
