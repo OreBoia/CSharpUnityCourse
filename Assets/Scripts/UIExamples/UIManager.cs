@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider _slider;
 
     [SerializeField] private Toggle _toggle;
+    [SerializeField] private TMP_Dropdown _dropdown;
 
     public string messaggioPersonalizzato = "Ciao dal codice!";
 
@@ -21,6 +21,11 @@ public class UIManager : MonoBehaviour
         _slider.onValueChanged.AddListener(OnSlideChanged);
 
         _toggle.onValueChanged.AddListener(OnToggleChanged);
+
+        _dropdown.onValueChanged.AddListener(index =>
+        {
+            Debug.Log($"Dropdown selezionato: {index}");
+        });
 
         // Altri eventi tramite EventTrigger
         // AggiungiEventiAggiuntivi();
