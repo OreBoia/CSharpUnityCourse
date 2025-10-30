@@ -3,15 +3,17 @@ using UnityEngine.EventSystems;
 
 // Per ricevere eventi su un oggetto UI, questo script deve essere associato a un GameObject
 // che ha anche un componente grafico (es. Image, Text, Button) con "Raycast Target" abilitato.
-public class UIInteractionHandler : MonoBehaviour, 
-    IPointerEnterHandler, 
-    IPointerExitHandler, 
-    IPointerDownHandler, 
+public class UIInteractionHandler : MonoBehaviour,
+    IPointerEnterHandler,
+    IPointerExitHandler,
+    IPointerDownHandler,
     IPointerUpHandler,
     IPointerClickHandler,
     IDragHandler,
+    IBeginDragHandler,
     ISelectHandler,
-    IDeselectHandler
+    IDeselectHandler,
+    IMoveHandler
 {
     // Implementazione di IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
@@ -59,5 +61,15 @@ public class UIInteractionHandler : MonoBehaviour,
     public void OnDeselect(BaseEventData eventData)
     {
         Debug.Log("Oggetto deselezionato (tramite interfaccia)");
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnMove(AxisEventData eventData)
+    {
+        Debug.Log($"Movimento con input direzionale: {eventData.moveDir} (tramite interfaccia)");
     }
 }
