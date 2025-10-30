@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Button _button;
     [SerializeField] private Slider _slider;
+
+    [SerializeField] private Toggle _toggle;
 
     public string messaggioPersonalizzato = "Ciao dal codice!";
 
@@ -17,41 +20,48 @@ public class UIManager : MonoBehaviour
 
         _slider.onValueChanged.AddListener(OnSlideChanged);
 
+        _toggle.onValueChanged.AddListener(OnToggleChanged);
+
         // Altri eventi tramite EventTrigger
         // AggiungiEventiAggiuntivi();
     }
-    
+
+    private void OnToggleChanged(bool isOn)
+    {
+        Debug.Log($"Toggle is now {(isOn ? "ON" : "OFF")}");
+    }
+
     // void AggiungiEventiAggiuntivi()
     // {
-        // Ottieni o aggiungi EventTrigger component
+    // Ottieni o aggiungi EventTrigger component
     //     EventTrigger trigger = _button.GetComponent<EventTrigger>();
     //     if (trigger == null)
     //         trigger = _button.gameObject.AddComponent<EventTrigger>();
-        
+
     //     // Pointer Enter (mouse hover)
     //     EventTrigger.Entry entryEnter = new EventTrigger.Entry();
     //     entryEnter.eventID = EventTriggerType.PointerEnter;
     //     entryEnter.callback.AddListener((data) => { OnPointerEnter((PointerEventData)data); });
     //     trigger.triggers.Add(entryEnter);
-        
+
     //     // Pointer Exit (mouse leave)
     //     EventTrigger.Entry entryExit = new EventTrigger.Entry();
     //     entryExit.eventID = EventTriggerType.PointerExit;
     //     entryExit.callback.AddListener((data) => { OnPointerExit((PointerEventData)data); });
     //     trigger.triggers.Add(entryExit);
-        
+
     //     // Pointer Down (mouse press down)
     //     EventTrigger.Entry entryDown = new EventTrigger.Entry();
     //     entryDown.eventID = EventTriggerType.PointerDown;
     //     entryDown.callback.AddListener((data) => { OnPointerDown((PointerEventData)data); });
     //     trigger.triggers.Add(entryDown);
-        
+
     //     // Pointer Up (mouse release)
     //     EventTrigger.Entry entryUp = new EventTrigger.Entry();
     //     entryUp.eventID = EventTriggerType.PointerUp;
     //     entryUp.callback.AddListener((data) => { OnPointerUp((PointerEventData)data); });
     //     trigger.triggers.Add(entryUp);
-        
+
     //     // Drag (trascinamento)
     //     EventTrigger.Entry entryDrag = new EventTrigger.Entry();
     //     entryDrag.eventID = EventTriggerType.Drag;
