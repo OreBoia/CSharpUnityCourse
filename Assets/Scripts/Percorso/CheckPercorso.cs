@@ -7,7 +7,6 @@ public class CheckPercorso : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         var collision = other.gameObject;
-
         // if (collision.CompareTag("Wall"))
         // {
         //     transform.position = _startPoint.position;

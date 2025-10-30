@@ -76,3 +76,11 @@ crashlytics-build.properties
 
 # Rider IDE auto-generated config folder
 .idea
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
