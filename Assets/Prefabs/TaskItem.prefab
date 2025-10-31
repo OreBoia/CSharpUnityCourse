@@ -85,6 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 30884476219872587}
+  - component: {fileID: 1177902986061349351}
   m_Layer: 5
   m_Name: TaskItem
   m_TagString: Untagged
@@ -113,6 +114,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 496.5579, y: 258.6232}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1177902986061349351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794591345872566292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fd4bf00fa7bac49a7d499f98431fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskItem
+  titleText: {fileID: 7903029320798398389}
+  descriptionText: {fileID: 632437216715630701}
+  idText: {fileID: 7644207316021032120}
+  completedToggle: {fileID: 7091824383549705729}
+  deleteButton: {fileID: 2625398345170046901}
+  editButton: {fileID: 0}
+  completedColor: {r: 0, g: 1, b: 0, a: 1}
+  incompleteColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
 --- !u!1 &799268633596248819
 GameObject:
   m_ObjectHideFlags: 0
