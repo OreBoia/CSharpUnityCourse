@@ -10,6 +10,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Toggle _toggle;
     [SerializeField] private TMP_Dropdown _dropdown;
 
+    [SerializeField] private TMP_InputField _inputField;
+
+    [SerializeField] private ScrollRect _scrollRect;
+
     public string messaggioPersonalizzato = "Ciao dal codice!";
 
     void OnEnable()
@@ -29,6 +33,42 @@ public class UIManager : MonoBehaviour
 
         // Altri eventi tramite EventTrigger
         // AggiungiEventiAggiuntivi();
+
+        _inputField.onValueChanged.AddListener(text =>
+        {
+            Debug.Log($"InputField cambiato: {text}");
+        });
+
+        _inputField.onEndEdit.AddListener(text =>
+        {
+            Debug.Log($"InputField editato: {text}");
+        });
+
+        _inputField.onSelect.AddListener((text) =>
+        {
+            Debug.Log($"InputField selezionato: {text}");
+        });
+
+        _inputField.onDeselect.AddListener((text) =>
+        {
+            Debug.Log($"InputField deselezionato: {text}");
+        });
+
+        _inputField.onSubmit.AddListener((text) =>
+        {
+            Debug.Log($"InputField inviato: {text}");
+        });
+
+        _inputField.onTextSelection.AddListener((text, start, length) =>
+        {
+            Debug.Log($"InputField selezione testo: {text}, start: {start}, length: {length}");
+        });
+
+
+        _scrollRect.onValueChanged.AddListener(position =>
+        {
+            Debug.Log($"ScrollRect posizione cambiata: {position}");
+        });
     }
 
     private void OnToggleChanged(bool isOn)
