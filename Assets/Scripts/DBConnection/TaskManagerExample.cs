@@ -87,12 +87,12 @@ public class TaskManagerExample : MonoBehaviour
         
         // Test 2: Create a new task
         Debug.Log("Test 2: Creating a new task");
-        taskManager.CreateTask("Test Task Unity", "This is a test task created from Unity", false);
+        taskManager.CreateTask("Test Task Unity", $"This is a test task created from Unity in {System.DateTime.Now}", false);
         yield return new WaitForSeconds(testDelay);
         
         // Test 3: Create another task
         Debug.Log("Test 3: Creating another task");
-        taskManager.CreateTask("Completed Task", "This task is already completed", true);
+        taskManager.CreateTask("Completed Task", $"This task is already completed in {System.DateTime.Now}", true);
         yield return new WaitForSeconds(testDelay);
         
         // Test 4: Load tasks again to see new ones

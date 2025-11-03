@@ -20,16 +20,23 @@ let fallbackTasks = [
 
 // Test endpoint for connection
 app.get('/api/test', (req, res) => {
-  res.json({ message: 'Server is running!', timestamp: new Date().toISOString() });
+  res.json({ 
+    message: 
+      'Server is running!', 
+    timestamp: 
+      new Date().toISOString() });
 });
 
 // API endpoints for tasks
 // GET all tasks
 app.get('/api/tasks', async (req, res) => {
-  try {
+  try 
+  {
     const [tasks] = await db.execute('SELECT * FROM tasks ORDER BY id DESC');
     res.json(tasks);
-  } catch (error) {
+  } 
+  catch (error) 
+  {
     console.log('⚠️ MySQL not available, using fallback tasks:', error.message);
     // Fallback: restituisci task in memoria
     res.json(fallbackTasks);
@@ -51,10 +58,12 @@ app.get('/api/tasks/:id', async (req, res) => {
 
 // POST new task
 app.post('/api/tasks', async (req, res) => {
-  try {
+  try 
+  {
     const { title, description, completed = false } = req.body;
     
-    if (!title) {
+    if (!title) 
+      {
       return res.status(400).json({ error: 'Il titolo è obbligatorio' });
     }
     
@@ -65,12 +74,15 @@ app.post('/api/tasks', async (req, res) => {
     
     const [newTask] = await db.execute('SELECT * FROM tasks WHERE id = ?', [result.insertId]);
     res.status(201).json(newTask[0]);
-  } catch (error) {
+  } 
+  catch (error) 
+  {
     console.log('⚠️ MySQL not available for POST, using fallback:', error.message);
     // Fallback: aggiungi alla lista in memoria
     const { title, description, completed = false } = req.body;
     
-    if (!title) {
+    if (!title) 
+    {
       return res.status(400).json({ error: 'Il titolo è obbligatorio' });
     }
     
@@ -88,7 +100,8 @@ app.post('/api/tasks', async (req, res) => {
 
 // PUT update task
 app.put('/api/tasks/:id', async (req, res) => {
-  try {
+  try 
+  {
     const { title, description, completed } = req.body;
     const taskId = req.params.id;
     
@@ -110,19 +123,24 @@ app.put('/api/tasks/:id', async (req, res) => {
 
 // DELETE task
 app.delete('/api/tasks/:id', async (req, res) => {
-  try {
+  try 
+  {
     const [result] = await db.execute('DELETE FROM tasks WHERE id = ?', [req.params.id]);
     
-    if (result.affectedRows === 0) {
+    if (result.affectedRows === 0) 
+    {
       return res.status(404).json({ error: 'Task non trovata' });
     }
     
     res.json({ message: 'Task eliminata con successo' });
-  } catch (error) {
+  } 
+  catch (error) 
+  {
     res.status(500).json({ error: 'Errore nell\'eliminazione della task', details: error.message });
   }
 });
 
+// all'avvio del server scrive delle informative in console
 app.listen(port, () => {
   console.log(`Server Node.js in ascolto su http://localhost:${port}`);
   console.log(`Endpoints disponibili:`);

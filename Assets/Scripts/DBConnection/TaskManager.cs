@@ -51,7 +51,7 @@ public class TaskManager : MonoBehaviour
 {
     [Header("Server Configuration")]
     public string baseUrl = "http://localhost:8080/api/tasks";
-    
+
     [Header("Events")]
     public UnityAction<List<Task>> OnTasksLoaded;
     public UnityAction<Task> OnTaskCreated;
@@ -65,7 +65,7 @@ public class TaskManager : MonoBehaviour
     private void Start()
     {
         // Test connection on start
-        StartCoroutine(TestConnection());
+        // StartCoroutine(TestConnection());
     }
     
     #region Public Methods
@@ -204,7 +204,7 @@ public class TaskManager : MonoBehaviour
                         yield break;
                     }
                     
-                    // JsonUtility non supporta direttamente array/liste, quindi wrappimo
+                    // JsonUtility non supporta direttamente array/liste, quindi wrappiamo
                     string wrappedJson = "{\"tasks\":" + jsonResponse + "}";
                     TaskListWrapper wrapper = JsonUtility.FromJson<TaskListWrapper>(wrappedJson);
                     
